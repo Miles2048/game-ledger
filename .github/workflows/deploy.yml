@@ -30,13 +30,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (static export)
-        run: npx next build
+      - name: Build (Vite static)
+        run: npx vite build --config vite.gh-pages.config.ts
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist-gh
 
   deploy:
     needs: build
